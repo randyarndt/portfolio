@@ -48,7 +48,7 @@ const ProjectsSection = () => {
         gridGap={8}
       >
         {projects.map((project) => (
-          <Card
+        <Card
             key={project.title}
             title={project.title}
             description={project.description}
