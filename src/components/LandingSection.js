@@ -20,9 +20,9 @@ const LandingSection = () => (
         <Avatar.Fallback name="Pete" />
         <Avatar.Image src="https://i.pravatar.cc/150?img=7" />
       </Avatar.Root>
-      <Heading size="sm">Hello, I am Pete!</Heading>
-      <Heading size="4xl">A frontend developer</Heading>
-      <Heading size="4xl">specialised in React</Heading>
+      <Heading size="sm">{greeting}</Heading>
+      <Heading size="4xl">{bio1}</Heading>
+      <Heading size="4xl">{bio2}</Heading>
     </VStack>
 
   </FullScreenSection>
