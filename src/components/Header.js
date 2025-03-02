@@ -44,9 +44,9 @@ const Header = () => {
     }
   };
 
-  const socialLinks = socials.map((social) => {
+  const socialLinks = socials.map((social, index) => {
     return (
-      <a href={social.url}>
+      <a href={social.url} key={index}>
         <FontAwesomeIcon icon={social.icon} size="2x" />
       </a>
     );
