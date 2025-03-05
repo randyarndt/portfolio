@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -47,13 +47,13 @@ const Header = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [previousScrollPosition, setPreviousScrollPosition] = useState(0);
 
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setPreviousScrollPosition(scrollPosition);
-    setScrollPosition(position);
-  };
-
   useEffect(() => {
+    const handleScroll = () => {
+      const position = window.pageYOffset;
+      setPreviousScrollPosition(scrollPosition);
+      setScrollPosition(position);
+    };
+
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
