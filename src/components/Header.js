@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -44,6 +44,22 @@ const Header = () => {
     }
   };
 
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [previousScrollPosition, setPreviousScrollPosition] = useState(0);
+
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setPreviousScrollPosition(scrollPosition);
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrollPosition]);
+
   const socialLinks = socials.map((social, index) => {
     return (
       <a href={social.url} key={index}>
@@ -58,7 +74,8 @@ const Header = () => {
       top={0}
       left={0}
       right={0}
-      translateY={0}
+      translateY={scrollPosition > previousScrollPosition ? -200 : 0}
+      transform={scrollPosition > previousScrollPosition ? "translateY(-200px)" : "translateY(0px)"}
       transitionProperty="transform"
       transitionDuration=".3s"
       transitionTimingFunction="ease-in-out"
